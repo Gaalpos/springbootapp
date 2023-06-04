@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selección de Colores</title>
+</head>
+<body>
+    <h1>Selección de Colores</h1>
+    
+    <form method="get" action="/randomColors">
+        <label for="colorCount">Número de colores a seleccionar:</label>
+        <input type="number" id="colorCount" name="colorCount" min="1" max="8" required>
+        <br><br>
+        
+        <label for="colorInput">Ingrese los colores (separados por comas):</label>
+        <input type="text" id="colorInput" name="colorInput" required>
+        <br><br>
+        
+        <input type="submit" value="Obtener Colores">
+    </form>
+
+    <h2>Colores seleccionados:</h2>
+    <p th:text="${finalColors}"></p>
+</body>
+</html>

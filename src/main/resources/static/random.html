@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Input Elements</title>
+  <script>
+    function addInput() {
+      var container = document.getElementById("container");
+      var input = document.createElement("input");
+      input.type = "text";
+      input.name = "name";
+      container.appendChild(input);
+      container.appendChild(document.createElement("br"));
+    }
+  </script>
+</head>
+<body>
+  <form>
+    <div id="container">
+      <!-- Existing input elements -->
+      <input type="text" name="name">
+      <br>
+    </div>
+    <button type="button" onclick="addInput()">Add Input</button>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

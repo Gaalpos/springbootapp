@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selección de Colores</title>
+</head>
+<body>
+    <h1>Selección de Colores</h1>
+    
+    <form method="post" action="/guardarColores">
+        <label for="colorCount">Número de colores a seleccionar:</label>
+        <input type="number" id="colorCount" name="colorCount" min="1" max="8" required>
+        <br><br>
+        
+        <label>Colores disponibles:</label><br>
+        <input type="checkbox" id="color1" name="colors" value="negro"> Negro<br>
+        <input type="checkbox" id="color2" name="colors" value="azul"> Azul<br>
+        <input type="checkbox" id="color3" name="colors" value="verde"> Verde<br>
+        <input type="checkbox" id="color4" name="colors" value="rojo"> Rojo<br>
+        <input type="checkbox" id="color5" name="colors" value="amarillo"> Amarillo<br>
+        <input type="checkbox" id="color6" name="colors" value="morado"> Morado<br>
+        <input type="checkbox" id="color7" name="colors" value="rosa"> Rosa<br>
+        <input type="checkbox" id="color8" name="colors" value="blanco"> Blanco<br>
+        <br>
+        
+        <input type="submit" value="Guardar Colores">
+    </form>
+</body>
+</html>

@@ -183,7 +183,11 @@ public class appController {
 
   @GetMapping("/deleteFile")
   public String deleteFile(@RequestParam String fileName){
-    return Utils.deleteFile(fileName);
+    if (fileName.equals("datos.txt")){
+      return Utils.deleteFile(fileName);
+    }else{
+      return "Archivo incorrecto";
+    }
 
   }
 

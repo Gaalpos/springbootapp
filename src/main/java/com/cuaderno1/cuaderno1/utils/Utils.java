@@ -123,4 +123,11 @@ public static String deleteFile(String fileName){
 
 }
 
+public static int dniletter(int dni){
+  String juegoCaracteres="TRWAGMYFPDXBNJZSQVHLCKE";
+  // int modulo = dni % 23;
+  return juegoCaracteres.charAt(dni % 23);
+  
+}
+
 }

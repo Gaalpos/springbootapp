@@ -17,4 +17,14 @@ public class Result {
     public void setPopulation(int population) {
         this.population = population;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    
 }

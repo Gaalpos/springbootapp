@@ -1,6 +1,5 @@
 package com.cuaderno1.cuaderno1.models;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

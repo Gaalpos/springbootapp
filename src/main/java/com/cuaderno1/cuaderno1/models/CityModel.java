@@ -1,16 +1,20 @@
 package com.cuaderno1.cuaderno1.models;
 
 public class CityModel {
+    private String name;
     private int id;
     private int population;
+ 
+
 
 
     public CityModel (){
         
     }
-    public CityModel(int id, int population) {
+    public CityModel(int id, int population, String name) {
         this.id = id;
         this.population = population;
+        this.name = name;
     }
     public int getId() {
         return id;
@@ -23,6 +27,12 @@ public class CityModel {
     }
     public void setPopulation(int population) {
         this.population = population;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     

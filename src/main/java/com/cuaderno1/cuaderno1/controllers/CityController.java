@@ -1,15 +1,23 @@
+package com.cuaderno1.cuaderno1.controllers;
+
+import java.io.IOException;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.cuaderno1.cuaderno1.models.CityModel;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @RestController
-@RequestMapping("/city")
 public class CityController {
 
-    @GetMapping("/firstResult")
-    public City getFirstResult(@RequestParam("cityName") String cityName) {
+    @GetMapping("/city")
+    public CityModel getFirstResult(@RequestParam("cityName") String cityName) {
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://geocoding-api.open-meteo.com/v1/search?name=" + cityName;
 
@@ -25,12 +33,15 @@ public class CityController {
             JsonNode resultsNode = jsonNode.get("results");
             if (resultsNode.isArray() && resultsNode.size() > 0) {
                 JsonNode firstResultNode = resultsNode.get(0);
+
                 int id = firstResultNode.get("id").asInt();
                 int population = firstResultNode.get("population").asInt();
+                String name = firstResultNode.get("name").asText();
 
-                City city = new City();
+                CityModel city = new CityModel();
                 city.setId(id);
                 city.setPopulation(population);
+                city.setName(name);
                 return city;
             }
         } catch (IOException e) {

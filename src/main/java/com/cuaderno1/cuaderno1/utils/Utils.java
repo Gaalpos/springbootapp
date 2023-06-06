@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.thymeleaf.DialectConfiguration;
 
@@ -123,11 +124,27 @@ public static String deleteFile(String fileName){
 
 }
 
-public static int dniletter(int dni){
+public static String dniletter(int dni){
   String juegoCaracteres="TRWAGMYFPDXBNJZSQVHLCKE";
   // int modulo = dni % 23;
-  return juegoCaracteres.charAt(dni % 23);
+  return  String.valueOf(juegoCaracteres.charAt(dni % 23));
   
+}
+
+
+public static List<Character> checkNames(String nombre1, String nombre2) {
+  String nombre1Lower = nombre1.toLowerCase();
+  String nombre2Lower = nombre2.toLowerCase();
+
+  List<Character> coincidencias = new ArrayList<>();
+
+  for (char c : nombre1Lower.toCharArray()) {
+      if (nombre2Lower.contains(String.valueOf(c))) {
+          coincidencias.add(c);
+      }
+  }
+
+  return coincidencias;
 }
 
 }

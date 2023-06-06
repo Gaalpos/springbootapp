@@ -16,9 +16,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 public class CityController {
 
+
+
     @GetMapping("/city")
     public CityModel getFirstResult(@RequestParam("cityName") String cityName) {
+
         RestTemplate restTemplate = new RestTemplate();
+        
         String url = "https://geocoding-api.open-meteo.com/v1/search?name=" + cityName;
 
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
@@ -28,9 +32,11 @@ public class CityController {
         // Supongamos que el JSON tiene una estructura similar al JSON original en la pregunta
 
         ObjectMapper objectMapper = new ObjectMapper();
+        
         try {
             JsonNode jsonNode = objectMapper.readTree(jsonResponse);
             JsonNode resultsNode = jsonNode.get("results");
+
             if (resultsNode.isArray() && resultsNode.size() > 0) {
                 JsonNode firstResultNode = resultsNode.get(0);
 

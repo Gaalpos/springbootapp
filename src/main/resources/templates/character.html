@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Character Information</title>
+</head>
+<body>
+    <h1>Character Information</h1>
+    <ul>
+        <li>ID: <span th:text="${character.id}"></span></li>
+        <li>Name: <span th:text="${character.name}"></span></li>
+        <li>Location: <span th:text="${character.location.name}"></span></li>
+    </ul>
+</body>
+</html>

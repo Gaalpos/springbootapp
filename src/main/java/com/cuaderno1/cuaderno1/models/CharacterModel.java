@@ -5,6 +5,7 @@ public class CharacterModel {
     public int id;
     public String name;
     public String image;
+    public Location location;
 
     
 }

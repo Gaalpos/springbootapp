@@ -1,13 +1,11 @@
 package com.cuaderno1.cuaderno1.models;
 
 public class CityModel {
+
     private String name;
     private int id;
     private int population;
  
-
-
-
     public CityModel (){
         
     }
@@ -16,6 +14,7 @@ public class CityModel {
         this.population = population;
         this.name = name;
     }
+    
     public int getId() {
         return id;
     }

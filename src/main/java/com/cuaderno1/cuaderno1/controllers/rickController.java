@@ -18,14 +18,16 @@ public class rickController {
     public String randomCharaceter(){
 
         CharacterModel characterModel = rickAndMortyService.getRandomCharacter();
+        String locationName = characterModel.location.name;
 
-        return characterModel.name + "<br/>"+ "<img width='200' src='"+characterModel.image+"'/>";
+        return characterModel.name +"</br>" + "<img width='200' src='"+characterModel.image+"'/>" + "</br>"+ locationName;
     }
 
     @GetMapping("rickandmorty")
     public String characeter(@RequestParam int id){
         CharacterModel characterModel = rickAndMortyService.getCharacter(id);
-        return characterModel.name + "<br/>" + "<img width='200' src='"+characterModel.image+"'/>";
+        String locationName = characterModel.location.name;
+        return characterModel.name + "<br/>" + "<img width='200' src='"+characterModel.image+"'/>" + "</br>"+ locationName;
 
     }
     

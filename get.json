@@ -1,0 +1,63 @@
+{
+    "responseData": {
+        "translatedText": "I like cats",
+        "match": 0.97
+    },
+    "quotaFinished": false,
+    "mtLangSupported": null,
+    "responseDetails": "",
+    "responseStatus": 200,
+    "responderId": null,
+    "exception_code": null,
+    "matches": [
+        {
+            "id": "755779940",
+            "segment": "Me gustan los gatos",
+            "translation": "I like cats",
+            "source": "es-ES",
+            "target": "en-GB",
+            "quality": "74",
+            "reference": null,
+            "usage-count": 2,
+            "subject": "All",
+            "created-by": "MateCat",
+            "last-updated-by": "MateCat",
+            "create-date": "2022-11-01 12:53:22",
+            "last-update-date": "2022-11-01 12:53:22",
+            "match": 0.97
+        },
+        {
+            "id": 0,
+            "segment": "me gustan los gatos",
+            "translation": "i like cats",
+            "source": "es-ES",
+            "target": "en-GB",
+            "quality": 70,
+            "reference": "Machine Translation.",
+            "usage-count": 2,
+            "subject": false,
+            "created-by": "MT!",
+            "last-updated-by": "MT!",
+            "create-date": "2023-06-07 10:21:02",
+            "last-update-date": "2023-06-07 10:21:02",
+            "match": 0.85,
+            "model": "neural"
+        },
+        {
+            "id": "645676323",
+            "segment": "--\u00a1No me gustan los gatos! - ",
+            "translation": "\u2018Not like cats!\u2019 ",
+            "source": "es-ES",
+            "target": "en-US",
+            "quality": "74",
+            "reference": null,
+            "usage-count": 2,
+            "subject": "All",
+            "created-by": "MateCat",
+            "last-updated-by": "MateCat",
+            "create-date": "2020-05-12 18:06:21",
+            "last-update-date": "2020-05-12 18:06:21",
+            "match": 0.84
+        }
+    ]
+}

@@ -12,7 +12,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.thymeleaf.DialectConfiguration;
 
@@ -132,19 +134,29 @@ public static String dniletter(int dni){
 }
 
 
-public static List<Character> checkNames(String nombre1, String nombre2) {
-  String nombre1Lower = nombre1.toLowerCase();
-  String nombre2Lower = nombre2.toLowerCase();
+public static String contarCoincidencias(String nombre1, String nombre2) {
+  nombre1 = nombre1.toLowerCase();
+        nombre2 = nombre2.toLowerCase();
 
-  List<Character> coincidencias = new ArrayList<>();
+        int coincidencias = 0;
+        Set<Character> letrasCoincidentes = new HashSet<>();
 
-  for (char c : nombre1Lower.toCharArray()) {
-      if (nombre2Lower.contains(String.valueOf(c))) {
-          coincidencias.add(c);
-      }
-  }
+        for (char c : nombre1.toCharArray()) {
+            if (nombre2.indexOf(c) != -1) {
+                coincidencias++;
+                letrasCoincidentes.add(c);
+            }
+        }
 
-  return coincidencias;
+        StringBuilder resultado = new StringBuilder();
+        resultado.append("Total de letras coincidentes: ").append(coincidencias).append("<br>");
+        resultado.append("Letras coincidentes: ");
+        
+        for (char c : letrasCoincidentes) {
+            resultado.append(c).append(" ");
+        }
+
+        return resultado.toString();
 }
 
 }

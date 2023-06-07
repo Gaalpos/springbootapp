@@ -30,14 +30,8 @@ public ModelAndView mostrarFormulario() {
 }
 
 @PostMapping("/names")
-public ModelAndView obtenerCoincidencias(@RequestParam String nombre1, @RequestParam String nombre2) {
-    List<Character> coincidencias = Utils.checkNames(nombre1, nombre2);
-
-    ModelAndView modelAndView = new ModelAndView("resultado");
-    modelAndView.addObject("Total Coincidencias", coincidencias.size());
-    modelAndView.addObject("letras Coincidentes", coincidencias);
-
-    return modelAndView;
+public String obtenerCoincidencias(@RequestParam String nombre1, @RequestParam String nombre2) {
+    return "<html><body>" + Utils.contarCoincidencias(nombre1, nombre2) + "</body></html>";
 }
 
 }

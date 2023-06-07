@@ -19,12 +19,13 @@ public class musicController {
     MusicService musicService;
 
     @GetMapping("/songs")
-    public String videogames(){
+    public String music(){
         String tmp = "";
         for(MusicModel game: musicService.getAllSongs()){
             tmp += game.getSong();
-            tmp += "<br/>";
+            tmp += " :  ";
             tmp += game.getArtist();
+            tmp += "<br/>";
             tmp += "<br/>";
         }
         return tmp;

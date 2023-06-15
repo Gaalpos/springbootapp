@@ -15,7 +15,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 import org.thymeleaf.DialectConfiguration;
 
 public class Utils {
@@ -45,7 +46,7 @@ public class Utils {
       fileReader = new FileReader("datos.txt");
       bufferedReader = new BufferedReader(fileReader);
       /*
-       * FileReader se utiliza para leer caracteres del archivo 
+       * FileReader se utiliza para leer caracteres del archivo
        * BufferedReader se utiliza para leer líneas de texto de manera eficiente.
        */
 
@@ -65,116 +66,126 @@ public class Utils {
     }
   }
 
-  public static float maxNum(float ...numbers){
-    if (numbers == null || numbers.length==0) throw new NumberFormatException();
+  public static float maxNum(float... numbers) {
+    if (
+      numbers == null || numbers.length == 0
+    ) throw new NumberFormatException();
 
-    float max=numbers[0];
-    for (int i=1; i<numbers.length;i++){
-        if(numbers[i] > max) max = numbers[i];
+    float max = numbers[0];
+    for (int i = 1; i < numbers.length; i++) {
+      if (numbers[i] > max) max = numbers[i];
     }
     return max;
-
   }
 
-  public static String capitalize(String cadena){
-    String [] words = cadena.split(" ");
-    String capitalizedText="";
+  public static String capitalize(String cadena) {
+    String[] words = cadena.split(" ");
+    String capitalizedText = "";
 
-    for (String word : words ){
+    for (String word : words) {
       char FirstLetter = Character.toUpperCase(word.charAt(0));
       String rest = word.substring(1).toLowerCase();
-      capitalizedText+=FirstLetter+rest+" ";
+      capitalizedText += FirstLetter + rest + " ";
     }
     return capitalizedText;
-  
   }
 
-  public static int getRandomValue(int max){
-    return (int) Math.floor( Math.random() * max );
-}
-
-public static String randomPicks(String cadena , int cuantos){
-  String[] opt = cadena.split(" ");
-  
-
-  ArrayList <String> opciones = new ArrayList<String>(Arrays.asList(opt));
-  String elegidos = "";
-
-  for (int i=0; i < cuantos; i++){
-    int random = Utils.getRandomValue(opciones.size());
-    elegidos += opciones.remove(random)+ " ";
+  public static int getRandomValue(int max) {
+    return (int) Math.floor(Math.random() * max);
   }
-  
-  return elegidos;
-}
 
-public static boolean isPalindrome(String word){
-  String inverseWord = new StringBuilder(word)
-      .reverse()
-      .toString();
-  return inverseWord.equalsIgnoreCase(word);
-}
+  public static String randomPicks(String cadena, int cuantos) {
+    String[] opt = cadena.split(" ");
 
-public static String deleteFile(String fileName){
-  File file = new File(fileName);
-  boolean borrado = file.delete();
+    ArrayList<String> opciones = new ArrayList<String>(Arrays.asList(opt));
+    String elegidos = "";
 
-  if (borrado == true)
-    return "borrado exitoso";
-  else
-    return "Borrado fallido";
+    for (int i = 0; i < cuantos; i++) {
+      int random = Utils.getRandomValue(opciones.size());
+      elegidos += opciones.remove(random) + " ";
+    }
 
-}
+    return elegidos;
+  }
 
-public static String dniletter(int dni){
-  String juegoCaracteres="TRWAGMYFPDXBNJZSQVHLCKE";
-  // int modulo = dni % 23;
-  return  String.valueOf(juegoCaracteres.charAt(dni % 23));
-  
-}
+  public static boolean isPalindrome(String word) {
+    String inverseWord = new StringBuilder(word).reverse().toString();
+    return inverseWord.equalsIgnoreCase(word);
+  }
 
+  public static String deleteFile(String fileName) {
+    File file = new File(fileName);
+    boolean borrado = file.delete();
 
-public static String contarCoincidencias(String nombre1, String nombre2) {
-  nombre1 = nombre1.toLowerCase();
-        nombre2 = nombre2.toLowerCase();
+    if (
+      borrado == true
+    ) return "borrado exitoso"; else return "Borrado fallido";
+  }
 
-        int coincidencias = 0;
-        Set<Character> letrasCoincidentes = new HashSet<>();
+  public static String dniletter(int dni) {
+    String juegoCaracteres = "TRWAGMYFPDXBNJZSQVHLCKE";
+    // int modulo = dni % 23;
+    return String.valueOf(juegoCaracteres.charAt(dni % 23));
+  }
 
-        for (char c : nombre1.toCharArray()) {
-            if (nombre2.indexOf(c) != -1) {
-                coincidencias++;
-                letrasCoincidentes.add(c);
-            }
-        }
+  public static String contarCoincidencias(String nombre1, String nombre2) {
+    nombre1 = nombre1.toLowerCase();
+    nombre2 = nombre2.toLowerCase();
 
-        StringBuilder resultado = new StringBuilder();
-        resultado.append("Total de letras coincidentes: ").append(coincidencias).append("<br>");
-        resultado.append("Letras coincidentes: ");
-        
-        for (char c : letrasCoincidentes) {
-            resultado.append(c).append(" ");
-        }
+    int coincidencias = 0;
+    Set<Character> letrasCoincidentes = new HashSet<>();
 
-        return resultado.toString();
-}
-
-
-public static String cuentaLetras(String frase){
-  String str = frase;
-  int vcount = 0, ccount = 0;
-
-  //converting all the chars to lowercase
-  str = str.toLowerCase();
-  for(int i = 0; i < str.length(); i++) { char ch = str.charAt(i); if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') { vcount++; } else if((ch >= 'a'&& ch <= 'z')) {
-          ccount++;
+    for (char c : nombre1.toCharArray()) {
+      if (nombre2.indexOf(c) != -1) {
+        coincidencias++;
+        letrasCoincidentes.add(c);
       }
+    }
+
+    StringBuilder resultado = new StringBuilder();
+    resultado
+      .append("Total de letras coincidentes: ")
+      .append(coincidencias)
+      .append("<br>");
+    resultado.append("Letras coincidentes: ");
+
+    for (char c : letrasCoincidentes) {
+      resultado.append(c).append(" ");
+    }
+
+    return resultado.toString();
   }
-  String total = "Vocales: " + vcount + " Consonantes: " + ccount; 
-  return total;
+
+  public static String cuentaLetras(String frase) {
+    String str = frase;
+    int vcount = 0, ccount = 0;
+
+    //converting all the chars to lowercase
+    str = str.toLowerCase();
+    for (int i = 0; i < str.length(); i++) {
+      char ch = str.charAt(i);
+      if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+        vcount++;
+      } else if ((ch >= 'a' && ch <= 'z')) {
+        ccount++;
+      }
+    }
+    String total = "Vocales: " + vcount + " Consonantes: " + ccount;
+    return total;
+  }
+
+  public class TranslationUtils {
+
+    public static String translateText(String text) {
+      RestTemplate restTemplate = new RestTemplate();
+
+      String url ="https://api.mymemory.translated.net/get?q=" + text + "&langpair=es|en";
+
+      ResponseEntity<String> response = restTemplate.getForEntity(
+        url,
+        String.class
+      );
+      return response.getBody();
+    }
+  }
 }
-
-
-}
-
-

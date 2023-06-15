@@ -24,6 +24,10 @@ public class AlumnoModel {
     private String name;
     private String fecha;
     // @Column(nullable = false)
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
     
     public AlumnoModel() {
     }

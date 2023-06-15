@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Traductor</title>
 </head>
 <body>
-
-    <H1> traducir de español a ingles</H1>
-    <form action="/traduce" method="post">
-        <label for="frase">Texto para traducir</label>
-        <input type="text" name="frase" id="frase">
-        <input type="submit" value="traducir">
-    </form>
+    <h1>Traductor</h1>
     
-</body> 
+    <form action="/traduce" method="get">
+        <label for="text">Texto a traducir:</label>
+        <input type="text" name="text" id="text" required>
+        <button type="submit">Traducir</button>
+    </form>
+</body>
 </html>
